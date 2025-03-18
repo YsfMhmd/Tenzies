@@ -1,0 +1,16 @@
+button.control-button{
+    background-color: #5035FF;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius:4px;
+    padding: 12px 2rem;
+    color: #ffffff;
+    font-family: Karla;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    margin-top: 1.5rem;
+    filter: drop-shadow(0 4px 8px #0000002E)
+}
