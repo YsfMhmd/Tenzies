@@ -1,6 +1,6 @@
 import "../styles/Button.css"
-export default function Button({onClick}){
+export default function Button({onClick,value}){
     return (
-        <button className="control-button" onClick={onClick}> Roll </button>
+        <button className="control-button" onClick={onClick}> {value} </button>
     )
 }

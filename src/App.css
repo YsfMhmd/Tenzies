@@ -9,3 +9,10 @@
   transform: translate(-50%,-50%);
   border-radius: 12px;  
 }
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
