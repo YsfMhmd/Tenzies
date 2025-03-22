@@ -2,6 +2,7 @@ import Header from  "./components/Header.jsx"
 import Dice from "./components/Dice.jsx"
 import Button from "./components/Button.jsx"
 import Footer from "./components/Footer.jsx"
+import Confetti from 'react-confetti'
 import {useState,useEffect} from "react"
 import "./App.css"
 export default function App(){
@@ -38,27 +39,35 @@ export default function App(){
             }else{return e}
           }))
   }
-      function onClick(){
-        setDice(prevDice=>{
-          const newArr = []
-          for(let i = 0;i<prevDice.length;i++){
-          if(prevDice[i].freezed === false){
-            newArr[i]={...prevDice[i],value:(Math.ceil(Math.random()*6))}
-          }else{
-            newArr[i]= prevDice[i]
+      function controllerOnClick(){
+        if(checkWinning(dice)){
+          setDice(createInitialDice())
+        }else{
+          setDice(prevDice=>{
+            const newArr = []
+            for(let i = 0;i<prevDice.length;i++){
+            if(prevDice[i].freezed === false){
+              newArr[i]={...prevDice[i],value:(Math.ceil(Math.random()*6))}
+            }else{
+              newArr[i]= prevDice[i]
+            }
           }
+          return newArr;
+          })
         }
-        return newArr;
-        })
+
       }
+      const width = window.innerWidth;
+      const height = window.innerHeight
   return(
     <>
+      {checkWinning(dice)?<Confetti width={width} height={height}/>:undefined}
     <div className="container">
       <Header />
       <main>
       {CreateDice()}
       </main>
-      <Button onClick={onClick} value={checkWinning(dice)?"New game":"Roll"}/>
+      <Button onClick={controllerOnClick} value={checkWinning(dice)?"New game":"Roll"}/>
     </div>
     <Footer />
     </>
